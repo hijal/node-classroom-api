@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Classroom = require('../models').classroom;
+const Classroom = require('../models').classrooms;
 // const Student = require('../models').student;
 
 router.get('/', (req, res) => {
@@ -18,8 +18,16 @@ router.get('/', (req, res) => {
       //   [Classroom.associations.students, 'createdAt', 'DESC']
     ]
   })
-    .then((classrooms) => res.json({ classrooms }))
-    .catch((err) => res.json({ error: err }));
+    .then((classrooms) =>
+      res.json({
+        classrooms
+      })
+    )
+    .catch((err) =>
+      res.json({
+        error: err
+      })
+    );
 });
 
 router.get('/:id', (req, res) => {
@@ -30,7 +38,11 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then((classroom) => res.json({ classroom }))
+    .then((classroom) =>
+      res.json({
+        classroom
+      })
+    )
     .catch((err) => {
       res.json({
         error: err
@@ -40,8 +52,16 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   Classroom.create(req.body)
-    .then((classroom) => res.json({ classroom }))
-    .catch((err) => res.json({ error: err }));
+    .then((classroom) =>
+      res.json({
+        classroom
+      })
+    )
+    .catch((err) =>
+      res.json({
+        error: err
+      })
+    );
 });
 
 router.post('/add/students', (req, res) => {

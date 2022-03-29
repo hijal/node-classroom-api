@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'classroom',
+          model: 'classrooms',
           key: 'id'
         }
       },
@@ -27,7 +27,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      deletedAt: { allowNull: true, type: Sequelize.DATE }
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {

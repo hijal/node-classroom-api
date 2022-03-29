@@ -10,9 +10,20 @@ module.exports = {
       },
       studentId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'students',
+          key: 'id'
+        }
       },
-      courseId: { allowNull: false, type: Sequelize.STRING },
+      courseId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'courses',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
