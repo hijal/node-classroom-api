@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   class Lecture extends Model {
     static associate(models) {
       Lecture.hasOne(models.courses, {
-        foreignKey: 'courseId',
+        foreignKey: 'lectureId',
         as: 'course'
       });
     }

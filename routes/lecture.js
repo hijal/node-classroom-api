@@ -1,5 +1,4 @@
 const express = require('express');
-const lecture = require('../models/lecture');
 const router = express.Router();
 
 const Lecture = require('../models').lectures;
@@ -99,6 +98,33 @@ router.delete('/:id', (req, res) => {
         })
       );
   });
+});
+
+// add lecture to a course
+router.post('/add/course', (req, res) => {
+  Lecture.create(
+    {
+      name: req.body.name,
+      course: req.body.course
+    },
+    {
+      include: [
+        {
+          association: 'course'
+        }
+      ]
+    }
+  )
+    .then((lecture) => {
+      res.json({
+        lecture
+      });
+    })
+    .catch((err) => {
+      res.json({
+        error: err
+      });
+    });
 });
 
 module.exports = router;

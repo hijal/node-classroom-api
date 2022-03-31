@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Course.belongsTo(models.lectures, {
         foreignKey: 'lectureId',
-        as: 'lecture'
+        as: 'lectures'
       });
     }
   }
